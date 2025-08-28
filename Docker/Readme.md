@@ -140,3 +140,6 @@ exit to exit the bash
 
 Run image 
 docker run -d -p 3000:3000 backend_app
+
+
+![alt text](image-14.png)
