@@ -121,8 +121,22 @@ Create own Image
 Code
 ![alt text](image-11.png)
 
-CODE 1st.=> current working dir 2nd.=> WORKDIR that has been written in Docekerfile
+CODE 1st.=> current working dir 2nd.=> WORKDIR that has been written in Dockerfile
 
 create docker image or build image
-docker build -t imagename .
+docker build -t imagename . 
+docker build -t backend_app .
 
+How to add db link 
+docker run -p 3000:3000 -e DATABASE_URL="postgres://avnadmin:ANVS_EeD1MdN-dNT40X91ln9Q-3533940-harkirat-d1b9.a.aivencloud.com:25579/defaultdb?sslmode=require" image_name
+
+
+Container use bash
+![alt text](image-12.png)
+![alt text](image-13.png)
+
+exit to exit the bash
+
+
+Run image 
+docker run -d -p 3000:3000 backend_app
