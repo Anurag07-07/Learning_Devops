@@ -5,4 +5,4 @@ to Publish
 Change name to @npm_username/dir_name
 npm publish --access=public
 npm pack to see all that you have sent
-Before Puslish Again change the version
+Before Publish Again change the version
