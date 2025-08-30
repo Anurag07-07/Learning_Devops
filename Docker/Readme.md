@@ -143,3 +143,47 @@ docker run -d -p 3000:3000 backend_app
 
 
 ![alt text](image-14.png)
+
+Create a Volume
+docker volume create volume_container
+
+docker volume ls 
+To see all volume 
+
+Mount the folder in  mongo which actually stores the data to the volume
+//The Data is persisted
+docker run -v volume_database:/data/db -p 27017:27017 mongo
+
+Model
+![alt text](image-15.png)
+![alt text](image-16.png)
+
+If a container needs to store data across restart for that there is need of volume 
+Volume is used to persist data  
+docker contianer can't talk to each other for that both container should be on same network
+
+//Create a docker network
+docker network create networkname
+docker network ls to see all the networks
+
+//Connect mongodb to network
+docker run -d -v volume_database:/data/db --name mongo_image_new_name --network  network_name -p 27017:27017 mongo
+
+Example
+docker run -d -v volume_database:/data/db --name my_mongo_network --network my_network -p 27017:27017 mongo
+
+-d detached mode
+-v volume_mount
+
+now change the name of localhost in mongodb link with mongo_image_new_name 
+
+then build the image again
+
+now run the process using
+docker run -d -p 3000:3000 --name any_name_you_want --network network_name image_name
+
+Example
+ docker run -p 3000:3000 --name something1 --network my_network mongodb_backend
+
+
+docker ps to seee the container
