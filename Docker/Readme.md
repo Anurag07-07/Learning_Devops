@@ -212,4 +212,42 @@ before that login docker cli => docker login
 
 //How to add tag to docker image
 docker build -t dockerimage:tagname . 
-ex => docker build -t anurag07raj/common:v1-dev . 
+ex => docker build -t anurag07raj/common:v1-dev .
+
+//Docker Compose
+![alt text](image-17.png)
+
+//Before docker compose 
+//Create a network 
+docker network create my_custom_network or whatever name
+Ex=> docker network create harkirat_network
+//Create a Volume
+docker volume create my_custom_volume or whatever name
+Ex=> docker volume create harkirat_volume
+
+//Start Mongo Container 
+docker run -d -v volume_database:data/db --name name  --network mycustom_network mongo or whatever image u want to run
+
+Ex =>  docker run -d -v harkirat-volume:data/db --name harkirat_mongo  --network harkirat_network  mongo
+
+//Create a Backend NodeJS Image
+
+docker build -t image_name .
+ex=>docker build -t harikrat_image .
+
+//Start backend Container
+docker run --network newtork_name -p 3000:3000 image_name
+ex=> docker run --network harkirat_network -p 3000:3000 harkirat_image
+
+
+How to connect to database
+Replace localhost in url with image_name(name of the container that run mongodb)
+
+ex => mongodb://harkiart_mongo:27017/Mydatabase
+Close the existing container
+Rebuild the image
+Start the backend container again
+
+![alt text](image-18.png)
+
+in docker yaml is two services are writeen than they automatically connect to same network but we have to give the volume

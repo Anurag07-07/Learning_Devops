@@ -1,0 +1,47 @@
+# version:'3.8'
+# services:
+#     mongodb:
+#       image:"mongo"
+#       container_name:mongodb 
+#       ports:
+#         - 27017:27017
+#       volumes:
+#         - mongodb_data:/data/db  
+
+# # Is same as docker run --name mongodb -p 27017:27017 -v mongodb_data:/data/db mongo        
+# # Container name should be any name
+#    backend:
+#     image:"backend22"
+#     container_name:backend_application
+#     ports:
+#       -3000:3000
+#       # -4521:3000 extra port if you want to add
+#       environment:
+#       # - MONGO_URL : mongo://conatiner_name_of_mongodb:27017
+#       - MONGO_URL : mongo://mongodb:27017
+
+# volumes:
+#   mongodb_data:
+
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    image: backend22
+    container_name: backend_application
+    ports:
+      - "3000:3000"
+      # - "4521:3000" # extra port if you want to add
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017
+
+volumes:
+  mongodb_data:
