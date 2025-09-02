@@ -19,8 +19,7 @@ app.use(AuthMiddleware)
 
 
 //Create A route in Hono JS
-app.get('/', async(c) => {
-  
+app.get('/', async(c) => {  
   //body, headers,query parameters ,middlewares, connecting to a database
   const body = await c.req.json()
   console.log(body);
@@ -32,5 +31,7 @@ app.get('/', async(c) => {
     message:`Hello We are using Hono`
   }) // to get json data
 })
+
+
 
 export default app
