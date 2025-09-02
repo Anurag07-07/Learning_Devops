@@ -251,3 +251,8 @@ Start the backend container again
 ![alt text](image-18.png)
 
 in docker yaml is two services are writeen than they automatically connect to same network but we have to give the volume
+
+To run docker compose 
+//It can come with docker desktop
+first install docker-compose
+ and then run docker-compose up
