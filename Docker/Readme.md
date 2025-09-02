@@ -187,3 +187,29 @@ Example
 
 
 docker ps to seee the container
+
+docker exec containerid ls to see everything inside container 
+docker exec containerid pwd to see current directory 
+
+docker exec -it containerid /bin/bash  to run docker in interactive mode
+
+now use ls pwd cat whatever you wants to run
+
+ctrl+D to exit the docker exec
+
+docker pull imagename to pull image
+ex => docker pull mongo
+
+If we push something on docker hub rather than get direct name like reponame or something we get
+username/reponame
+
+ex=>if we push mongo we get username/mongo
+and to run it docker run username/reponame 
+
+//How to push docker image
+docker push name_of_repo
+before that login docker cli => docker login
+
+//How to add tag to docker image
+docker build -t dockerimage:tagname . 
+ex => docker build -t anurag07raj/common:v1-dev . 
