@@ -263,3 +263,70 @@ first install docker-compose
  How to make a Bind 
  docker run -p mac_add:container_address  -v current_directory:image_name/dir  image_name
  docker run -p 5173:5173  -v ./app:/reactapp/app reactapp
+
+ Bind Mount in React
+
+ Got it 👍 You’re mounting your local code into the container with:
+
+```bash
+docker run -p 5173:5173 -v ./app:/reactapp/app reactapp
+```
+
+But your **changes are not reflecting in the browser**.
+That’s a common issue with React (especially **Vite**) inside Docker. Here’s why:
+
+---
+
+### 🔍 Why changes are not showing:
+
+1. **Vite uses hot-reload** but needs proper file watching (`chokidar`).
+   Inside Docker, file system events from mounted volumes don’t always propagate correctly unless we enable polling.
+
+2. **Your container may already have old build files** – if your Dockerfile did `npm run build`, then it’s serving a static build (no live reload).
+   Mounting source won’t change the built files.
+
+---
+
+### ✅ Fix
+
+If you want **live reload (development mode)** inside Docker:
+
+1. **Dockerfile (development mode)**:
+
+   ```dockerfile
+   FROM node:18
+
+   WORKDIR /reactapp
+
+   COPY package*.json ./
+   RUN npm install
+
+   # Copy the source code
+   COPY . .
+
+   # Expose Vite's default port
+   EXPOSE 5173
+
+   # Enable polling so file changes in mounted volume are detected
+   ENV CHOKIDAR_USEPOLLING=true
+
+   CMD ["npm", "run", "dev", "--", "--host"]
+   ```
+
+2. **Run with volume mount**:
+
+   ```bash
+   docker run -it -p 5173:5173 -v ${PWD}:/reactapp reactapp
+   ```
+
+   (On Windows Git Bash, use `//c/path/to/app:/reactapp` instead of `${PWD}`)
+
+3. Now when you edit files locally → Docker container sees changes → Vite hot reload works.
+
+---
+
+⚡ If you instead want a **production build** (no auto-reload, just fast static site), then you shouldn’t mount volumes — instead, use an `nginx` container.
+
+---
+
+👉 Do you want me to give you **two separate Dockerfiles** (one for development with hot reload, one for production with nginx), so you can switch depending on your use case?
