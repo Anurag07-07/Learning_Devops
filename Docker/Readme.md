@@ -256,3 +256,10 @@ To run docker compose
 //It can come with docker desktop
 first install docker-compose
  and then run docker-compose up
+
+ In Bind Mount the file or directory in host machine is mounted with container
+ ![alt text](image-19.png)
+
+ How to make a Bind 
+ docker run -p mac_add:container_address  -v current_directory:image_name/dir  image_name
+ docker run -p 5173:5173  -v ./app:/reactapp/app reactapp
