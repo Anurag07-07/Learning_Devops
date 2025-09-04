@@ -449,3 +449,9 @@ volumes:
 ---
 
 👉 Do you want me to also explain how you could add your **React frontend** to this `docker-compose.yml` so all 3 (frontend, backend, DB) run together?
+
+//Run postgres in Docker
+docker run -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=anurag07raj  -d -p 5432:5432 postgres
+
+Connection string will be
+postgresql://postgres:mysecretpassword@localhost:3542/postgres
