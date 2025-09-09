@@ -11,3 +11,5 @@ Vite Ts is build System as it work as compiler
 //Build system orchestroion means first that folder has build on which other folder dependent and then only other folders build
 
 ![alt text](image-4.png)
+
+![alt text](image-5.png)
