@@ -26,7 +26,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "list",
         name: "type",
         message: "What type of file should be created?",
-        choices: [".md", ".txt"],
+        choices: [".md", ".txt",".tsx",".jsx",".js",".ts"],
       },
       {
         type: "input",
