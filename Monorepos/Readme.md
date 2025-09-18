@@ -24,3 +24,12 @@ Turborepo is not exactly a monorepo framework
 ![alt text](image-6.png)
 
 ![alt text](image-7.png)
+
+
+how to use esbuild directly
+First Command
+npm i esbuild
+Second Command
+npx esbuild ./src/index.ts --bundle --platform=node --outfile=dist/index.js
+Third command
+node dist/index.js or npm run start where "start":"node ./dist/index.js"
