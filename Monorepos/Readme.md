@@ -31,5 +31,8 @@ First Command
 npm i esbuild
 Second Command
 npx esbuild ./src/index.ts --bundle --platform=node --outfile=dist/index.js
+
+or write "build":"esbuild ./src/index.ts --bundle --platform=node --outfile=dist/index.js" 
+
 Third command
 node dist/index.js or npm run start where "start":"node ./dist/index.js"
