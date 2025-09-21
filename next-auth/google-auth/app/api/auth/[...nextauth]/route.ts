@@ -33,7 +33,11 @@ const handler = NextAuth({
     clientId: process.env.GITHUB_ID!,
     clientSecret: process.env.GITHUB_SECRET!
   })
-  ]
+  ],
+  pages:{
+    //If any error come on sigin it again reach to signin page
+    signIn:'/signin'
+  }
 })
 export const GET = handler
 export const POST = handler
