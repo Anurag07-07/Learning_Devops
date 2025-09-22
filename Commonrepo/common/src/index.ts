@@ -43,7 +43,7 @@ export interface TokenPayload extends JwtPayload{
 export const VerifyToken =(jwt_secret:string) => (req:Request,res:Response,next:NextFunction)=>{
   //Fetch the token from cokkies or headers
   try {  
-  const fetch_token = req.headers.authorization
+  const fetch_token = req.headers.authorization || req.cookies.token
   const token = fetch_token?.startsWith("Bearer ") ? fetch_token.split(" ")[1] : req.cookies?.token as unknown as string
   
   if (!token) {
