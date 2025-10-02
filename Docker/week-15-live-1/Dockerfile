@@ -16,5 +16,5 @@ EXPOSE 3000
 # All of this run when image is create
 
 
-CMD [ "node","dist/index.js" ]
+CMD [ "node","dist/index.js"]
 # This Run when is started
