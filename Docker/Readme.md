@@ -124,7 +124,7 @@ Code
 CODE 1st.=> current working dir 2nd.=> WORKDIR that has been written in Dockerfile
 
 create docker image or build image
-docker build -t imagename .dokcer  
+docker build -t imagename .
 docker build -t backend_app .
 
 How to add db link 

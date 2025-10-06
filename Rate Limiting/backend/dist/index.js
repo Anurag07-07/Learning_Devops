@@ -1,8 +1,10 @@
 import express, {} from 'express';
 const app = express();
+app.use(express.json());
 const otpStore = {};
 app.post('/generate-otp', (req, res) => {
     const { email } = req.body;
+    console.log(typeof email);
     if (!email) {
         return res.status(400).json({ message: `Email is Required` });
     }

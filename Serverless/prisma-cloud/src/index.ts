@@ -30,7 +30,6 @@ export default {
 					}
 				}).$extends(withAccelerate())
 
-
 		const response = await prisma.user.create({
 			data: {
 					name: "alice@prisma.io",

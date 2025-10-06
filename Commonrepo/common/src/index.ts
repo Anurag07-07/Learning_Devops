@@ -40,7 +40,7 @@ export interface TokenPayload extends JwtPayload{
   _id:string
 }
 
-export const VerifyToken =(jwt_secret:string) => (req:Request,res:Response,next:NextFunction)=>{
+export const VerifyToken = (jwt_secret:string) => (req:Request,res:Response,next:NextFunction)=>{
   //Fetch the token from cokkies or headers
   try {  
   const fetch_token = req.headers.authorization || req.cookies.token

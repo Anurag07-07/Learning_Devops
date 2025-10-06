@@ -8,13 +8,13 @@ const server = http.createServer(function(request:any,response:any){
 
 const wss = new WebSocketServer({server});
 
-wss.on('connection',function connection(ws){
+wss.on('connection',function(ws){
 	ws.on('error',console.error)
 
-	ws.on('message',function message(data,isBinary){
-		wss.clients.forEach(function each(client){
+	ws.on('message',function(data,isBinary){
+		wss.clients.forEach(function(client){
 			if(client.readyState===WebSocket.OPEN){
-				client.send(data,{binary:isBinary})
+				client.send(data,{binary:isBinary})         
 			}
 		})
 	})

@@ -1,6 +1,8 @@
 import express, { type Request, type Response } from 'express'
 const app = express()
 
+app.use(express.json())
+
 //Interface for Object Type
 interface OBJ{
   [key:string]:string
@@ -11,6 +13,8 @@ const otpStore:Record<string,string> = {}
 
 app.post('/generate-otp',(req:Request,res:Response)=>{
   const {email} = req.body
+  console.log(typeof email);
+  
   if (!email) {
     return res.status(400).json({message:`Email is Required`})
   }
