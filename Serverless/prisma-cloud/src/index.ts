@@ -22,8 +22,6 @@ export interface Env{
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-
-
 						const prisma = new PrismaClient({
 					datasources: {
 						db: { url: env.DATABASE_URL }
