@@ -1,3 +1,2 @@
-import { GameManager } from "./store.js";
-export declare const gameManager: GameManager;
+export {};
 //# sourceMappingURL=index.d.ts.map
