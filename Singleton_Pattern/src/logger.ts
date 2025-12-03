@@ -1,4 +1,4 @@
-import { gameManager } from "./index.js";
+import { gameManager } from "./store.js";
 
 export function startLogger(){
   setInterval(()=>{

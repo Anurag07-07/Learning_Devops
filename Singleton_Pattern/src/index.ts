@@ -1,7 +1,5 @@
 import { startLogger } from "./logger.js"
-import { GameManager } from "./store.js"
-
-export const gameManager = new GameManager()
+import { gameManager } from "./store.js"
 
 startLogger()
 

@@ -13,9 +13,30 @@ interface IGame{
 
 export class GameManager{
   games:IGame[]= []
-  constructor(){
+  private static instance:GameManager;
+   private constructor(){
     this.games = []
   }
+
+  static getInstance(){
+    // Static attribute => that is associated with the class not with the object 
+    if (GameManager.instance) {
+      return GameManager.instance
+    }
+    GameManager.instance = new GameManager()
+    return GameManager.instance
+  }
+
+  // or 
+
+  // static getInstance1(){
+  //   // Static attribute => that is associated with the class not with the object 
+  //   if (this.instance) {
+  //     return this.instance
+  //   }
+  //   this.instance = new GameManager()
+  //   return this.instance
+  // }
 
   addMove(gameID:string,move:string){
     console.log(`Adding moves to ${move} to game ${gameID}`);
@@ -40,3 +61,5 @@ export class GameManager{
     console.log(this.games);
   }
 }
+
+export const gameManager = GameManager.getInstance()
