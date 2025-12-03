@@ -1,7 +1,7 @@
-import { games } from "./store.js";
+import { gameManager } from "./index.js";
 export function startLogger() {
     setInterval(() => {
-        console.log(games);
+        console.log(gameManager.log());
     }, 5000);
 }
 //# sourceMappingURL=logger.js.map
